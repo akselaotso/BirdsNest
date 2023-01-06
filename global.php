@@ -7,8 +7,7 @@
  */
 
 // Project constants
-//define('SITE_URL', $_SERVER['HTTP_HOST']);
-define('SITE_URL', 'http://localhost/BirdsNest/');
+define('SITE_URL', $_SERVER['HTTP_HOST']);
 define('FRONTPAGE_ADDRESS', __DIR__ . '/public/index.html');
 define('PILOT_DATA_ADDRESS', __DIR__ . '/public/drones.json');
 define('PILOT_DATA_URL', SITE_URL . 'public/drones.json');
