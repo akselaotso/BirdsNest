@@ -8,6 +8,14 @@ For the rapid SSG I build a php daemon with a two second sleep cycle. The daemon
 
 After the page has loaded a JavaScript function starts running, again with a two second interval, updating the data on the site without refreshing the page.
 
+## How to start the web app
 The Dockerfile contains details for a tested image, but really you need two things: apache2 and php (the project has only been tested on php8.1). 
 
-Specific to this project on the server site: you can start the php scrip to the background for example with "nohup php [project location]/data_collection_daemon.php &" and you need to configure your apache2 server to use the projects 'public' folder as the document root. 
+Specific to this project on the server side: 
+
+You can start the php scrip to the background, for example with:
+```
+nohup php [project location]/data_collection_daemon.php &
+```
+
+And you need to configure your apache2 server to use the projects 'public' folder as the document root. 
