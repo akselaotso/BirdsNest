@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds nest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>    
+    <main>
+        <h2>
+            Law breaking pilots in order form least to most recent.
+        </h2>
+
+        <p>
+            A pilot lands on the list if they enter within 100m of the nest. The list remembers the worst violation for 10 minutes after the last violation. Display's name, phone number, email and shortest recorded distance from the nest.
+        </p>
+        
+        <div id="pilotData"><div>
+            <h3>Dax Volkman</h3>
+            <p>+210197335671, dax.volkman@example.com, 90.683924396955 meters</p>
+            </div><div>
+            <h3>Mia Spencer</h3>
+            <p>+210744831628, mia.spencer@example.com, 75.078909270492 meters</p>
+            </div><div>
+            <h3>Lavada Zboncak</h3>
+            <p>+210788303905, lavada.zboncak@example.com, 52.512879250749 meters</p>
+            </div><div>
+            <h3>Aditya Bailey</h3>
+            <p>+210295000533, aditya.bailey@example.com, 46.9743150949 meters</p>
+            </div>        </div>
+    </main>
+    <script>
+        /**
+         * After window has loaded start the function. The function
+         * Fetches data from the drones.json document, which is also 
+         * in the public folder, and displays that data within the div 
+         * with the id "pilotData".
+         */
+        window.onload = function fetch_data() {
+            const container = document.getElementById("pilotData");
+
+            /**
+             * Every 2 seconds execute the fetch action with promises.
+             * The code loops through every drone, adding the necessary
+             * information in the appropriate HTML format into a string.
+             * The HTML is then updated within the fetch right after the 
+             * loop.
+             */ 
+            setInterval(() => { 
+                fetch("http://localhost/BirdsNest/public/drones.json").then((response) => { 
+                    return response.json();
+                }).then((drones) => {
+                    var dataContent = "";
+                    Object.entries(drones).forEach((element) => {
+                        dataContent = dataContent.concat(`<div> 
+                            <h3>${element[1].pilot}</h3> 
+                            <p>${element[1].phone}, ${element[1].email}, ${element[1].distance}</p>
+                            </div>`);
+                    });
+                    container.innerHTML = dataContent; 
+                    console.log("updated");
+                }).catch((error) => { 
+                    console.log(error); 
+                });
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html> 
+
