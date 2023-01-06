@@ -11,6 +11,7 @@ if (php_sapi_name() === 'cli'){
     set_time_limit(0);
 
     // Update data and render page indefinetly with a break between each cycle.
+    // Has to be killed from the cli
     while (TRUE) {
         // Get info of drones and pilots if drone enter within given meters from the nest in the past 10min
         $drones = process_drone_data(simplexml_load_file(DRONE_URL), 100);
