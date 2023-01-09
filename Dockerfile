@@ -1,6 +1,6 @@
 FROM debian
 WORKDIR /var/www/html
-COPY . /var/www/html
+COPY ./app/ /var/www/html
 RUN apt-get update && apt-get -y install sudo curl
 
 #Installing php

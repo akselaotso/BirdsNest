@@ -1,0 +1,39 @@
+        </div>
+    </main>
+    <script>
+        /**
+         * After window has loaded start the function. The function
+         * Fetches data from the drones.json document, which is also 
+         * in the public folder, and displays that data within the div 
+         * with the id "pilotData".
+         */
+        window.onload = function fetch_data() {
+            const container = document.getElementById("pilotDataDiv");
+            const pilotDataURL = "http://" + window.location.hostname + "/drones.json";
+
+            /**
+             * Every 2 seconds execute the fetch action with promises.
+             * The code loops through every drone, formatting the array.
+             * The array is then joined to a string and inserted to HTML.
+             */ 
+            setInterval(() => { 
+                fetch(pilotDataURL).then((response) => { 
+                    return response.json();
+                }).then((drones) => {
+                    var dataContent = "";
+                    Object.entries(drones).forEach((element) => {
+                        dataContent = dataContent.concat(`<div> 
+                            <h3>${element[1].pilot}</h3> 
+                            <p>${element[1].phone}, ${element[1].email}, ${element[1].distance.toFixed(2)} meters</p>
+                            </div>`);
+                    });
+                    container.innerHTML = dataContent; 
+                }).catch((error) => { 
+                    console.log(error); 
+                });
+            }, 2000);
+        }
+    </script>
+</body>
+</html> 
+

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+
+* {
+    font-family: 'Lexend', sans-serif;
+    color: #151A1E;
+    max-width: 70ch;
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+main {
+    padding: 10px;
+}
+
+main>p {
+    margin: 50px 0;
+}
+
+#pilotData div p {
+    margin-bottom: 30px;
+}
