@@ -47,13 +47,36 @@ function remove_older_than(array $droneArray, int $minutes): array {
  * @return array returns an array of the pilots information
  */
 function fetch_pilot_info(string $serialNumber) {
-    $pilotData = json_decode(file_get_contents(PILOT_URL . $serialNumber), true);
+    $pilotDataFile = file_get_contents(PILOT_URL . $serialNumber);
+
+    if (is_bool($pilotDataFile)) {
+        $pilotData = array(
+            "firstName" => "Unknown",
+            "lastName" => "",
+            "phoneNumber" => "Unknown number",
+            "email" => "Unknown@unknown"
+        );
+    } else {
+        $pilotData = json_decode($pilotDataFile, true);
+    }
 
     return array(
         "pilot" => $pilotData['firstName'] . " " . $pilotData['lastName'],
         "phone" => $pilotData['phoneNumber'],
         "email" => $pilotData['email'],
     );
+}
+
+function get_xml_from_url(string $url): SimpleXMLElement {
+    $resource = curl_init();
+    curl_setopt($resource, CURLOPT_URL, $url);
+    curl_setopt($resource, CURLOPT_HEADER, false);
+    curl_setopt($resource, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($resource, CURLOPT_SSLVERSION, 4);
+    // curl_setopt($resource, CURLOPT_SSL_VERIFYPEER, false);
+    // curl_setopt($resource, CURLOPT_SSL_VERIFYHOST, 0);
+
+    return simplexml_load_string(curl_exec($resource));
 }
 
 

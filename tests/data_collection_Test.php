@@ -31,7 +31,5 @@ class data_collection_test extends TestCase {
         
         $this->assertEquals(remove_older_than($sampleData, 10), $addition);
     }
-
-
 }
 

@@ -1,6 +1,7 @@
 {
     "require": {
-        "phpunit/phpunit": "9.5.27"
+        "phpunit/phpunit": "9.5.27",
+        "mockery/mockery": "1.5.1"
     },
     "autoload": {
         "psr-4": {

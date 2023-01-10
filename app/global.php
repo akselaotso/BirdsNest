@@ -7,9 +7,9 @@
  */
 
 // Project
-define('FRONTPAGE_ADDRESS', __DIR__ . '/public/index.html');
-define('PILOT_DATA_ADDRESS', __DIR__ . '/public/drones.json');
-define('TEMPLATE_PATH', __DIR__ . '/Templates/default/');
+define('PROJECT_ROOT_DIRECTORY', __DIR__);
+define('PILOT_DATA_ADDRESS', PROJECT_ROOT_DIRECTORY . '/public/drones.json');
+define('DATA_COLLECTION_MODULE', PROJECT_ROOT_DIRECTORY . '/Modules/data_collection/data_collection.php');
 define('DAEMON_SLEEP_TIME', 2);
 
 // External
