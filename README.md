@@ -7,15 +7,15 @@ My initial approachwas a sort of rapid static site generation method. This would
 When a user requests the page the server first executes the PHP on the page and then serves the page to the user. After this the JavaScript starts running updating the page on a two second interval.
 
 ## How to start the web app
-The actual app is in the app folder. The Dockerfile contains details for a tested image, but really you need two things: apache2 and php (the project has only been tested on php8.1). 
+The actual app is in the app folder. The Dockerfile contains details for a tested image, but really you need two things: apache2 and php (the project has been tested on php8.1). 
 
-You need to configure your apache2 server to use the projects 'public' folder as the document root as well as make drone.json writeable for all users with the following command.
+You need to configure your apache2 server to use the projects 'public' folder as the document root as well as make all files in 'data' (note: only 'data', the folder is not in 'public') writeable for all users with the following command:
 ```
-sudo chmod 666 [route to folder]/drones.json
+sudo chmod 666 [route to file]
 ```
 
 ## Testing
-Tests written for PHP Unit version 9.5.27. You will need PHPUnit, if you have composer installed executing the following in the project folder will install the necessary items. Composer requires the php modules mbstring and xml. Testing is limited to locally operating functions in the data collection module.
+Tests written for PHP Unit version 9.5.27. You will need PHPUnit, if you have composer installed executing the following in the project folder will install the necessary items. Composer requires the php modules mbstring and xml. The test runs the primary function of data_collection class and compares the output to a correct output.
 ```
 php composer.phar update
 ```

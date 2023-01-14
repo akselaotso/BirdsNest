@@ -1,0 +1,34 @@
+<report>
+    <deviceInformation deviceId="id">
+        <listenRange>distance</listenRange>
+        <deviceStarted>timestamp</deviceStarted>
+        <uptimeSeconds>time</uptimeSeconds>
+        <updateIntervalMs>interval</updateIntervalMs>
+    </deviceInformation>
+    <capture snapshotTimestamp="timestamp">
+        <drone>
+            <serialNumber>SN-Example9</serialNumber>
+            <model>Model</model>
+            <manufacturer>example corporation</manufacturer>
+            <mac>macaddress</mac>
+            <ipv4>ipv4address</ipv4>
+            <ipv6>ipv6address</ipv6>
+            <firmware>number</firmware>
+            <positionY>250000</positionY>
+            <positionX>255000</positionX>
+            <altitude>4000</altitude>
+        </drone>
+        <drone>
+            <serialNumber>SN-Example8</serialNumber>
+            <model>Model</model>
+            <manufacturer>example corporation</manufacturer>
+            <mac>macaddress</mac>
+            <ipv4>ipv4address</ipv4>
+            <ipv6>ipv6address</ipv6>
+            <firmware>number</firmware>
+            <positionY>257000</positionY>
+            <positionX>250000</positionX>
+            <altitude>4000</altitude>
+        </drone>
+    </capture>
+</report>

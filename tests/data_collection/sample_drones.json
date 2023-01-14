@@ -3,28 +3,28 @@
         "pilot":"Example1",
         "phone":"+1234567891",
         "email":"Example1@example.com",
-        "distance":37.15238733465264,
+        "distance":37,
         "lastTime":1673177929
     },
     "SN-Example2":{
         "pilot":"Example2",
         "phone":"+1234567892",
         "email":"Example2@example.com",
-        "distance":86.6129576382434,
+        "distance":86,
         "lastTime":1673177916
     },
     "SN-Example3":{
         "pilot":"Example3",
         "phone":"+1234567893",
         "email":"Example3@example.com",
-        "distance":50.78806512998918,
+        "distance":50,
         "lastTime":1673177939
     },
     "SN-Example4":{
         "pilot":"Example4",
         "phone":"+1234567894",
         "email":"Example4@example.com",
-        "distance":15.380694539226763,
+        "distance":15,
         "lastTime":1673177955
     }
 }

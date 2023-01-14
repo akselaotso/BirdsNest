@@ -56,45 +56,35 @@ header("Pragma: no-cache");
         </p>
 
         <div id="pilotDataDiv">
-            <?php 
+            <?php
+                $collector = new data_collection;
+
                 $droneLocationXML = simplexml_load_file(DRONE_URL);
 
-                $pilots = processed_drone_data($droneLocationXML, 100);
+                $pilots = $collector->processed_drone_data($droneLocationXML, 100);
                 
                 file_put_contents(PILOT_DATA_ADDRESS, json_encode($pilots));
 
                 $dataHTML = "";
 
                 foreach ($pilots as $pilot) {
-                    $dataHTML .= 
-                        '<div>
-                        <h3>' . $pilot['pilot'] . '</h3>
-                        <p>' . $pilot['phone'] . ', ' . $pilot['email'] . ', ' . number_format($pilot['distance'], 2, '.', '') . ' meters</p>
-                        </div>';
+                    $dataHTML .='<div><h3>' . $pilot['pilot'] . '</h3><p>' . $pilot['phone'] . ', ' . $pilot['email'] . ', ' . number_format($pilot['distance'], 2, '.', '') . ' meters</p></div>';
                 }
 
                 echo($dataHTML);
             ?>
         </div>
-
     </main>
 
     <script>
         /**
-         * After window has loaded start the function. The function
-         * Fetches data from the drones.json document, which is also 
-         * in the public folder, and displays that data within the div 
-         * with the id "pilotData".
+         * After window has loaded start the function. The function fetches data from 
+         * live_data_collection.php and updates #pilotData.
          */
         window.onload = function fetch_data() {
             const container = document.getElementById("pilotDataDiv");
-            const pilotDataURL = "http://" + window.location.hostname + "/BirdsNest/app/public/live_data_collection.php";
+            const pilotDataURL = "http://" + window.location.hostname + "<?php echo(LIVE_DATA_UPDATE_PATH);?>";
 
-            /**
-             * Every 2 seconds execute the fetch action with promises.
-             * The code loops through every drone, formatting the array.
-             * The array is then joined to a string and inserted to HTML.
-             */ 
             setInterval(() => { 
                 fetch(pilotDataURL).then((response) => { 
                     return response.json();
